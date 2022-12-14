@@ -172,7 +172,7 @@
               <text value="Discount"/>
             </properties>
           </component>
-          <component id="3a74f" class="javax.swing.JRadioButton" binding="rbNone">
+          <component id="1857a" class="javax.swing.JRadioButton" binding="rbNone">
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -181,7 +181,7 @@
               <text value="None"/>
             </properties>
           </component>
-          <component id="97d65" class="javax.swing.JRadioButton" binding="rb5">
+          <component id="1d680" class="javax.swing.JRadioButton" binding="rb5">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -190,7 +190,7 @@
               <text value="5% Off"/>
             </properties>
           </component>
-          <component id="aa6ea" class="javax.swing.JRadioButton" binding="rb10">
+          <component id="200e4" class="javax.swing.JRadioButton" binding="rb10">
             <constraints>
               <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -199,7 +199,7 @@
               <text value="10% Off"/>
             </properties>
           </component>
-          <component id="a042b" class="javax.swing.JRadioButton" binding="rb15">
+          <component id="d3a76" class="javax.swing.JRadioButton" binding="rb15">
             <constraints>
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -251,4 +251,13 @@
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="bgRadio">
+      <member id="1857a"/>
+      <member id="1857a"/>
+      <member id="1d680"/>
+      <member id="200e4"/>
+      <member id="d3a76"/>
+    </group>
+  </buttonGroups>
 </form>
