@@ -8,14 +8,25 @@ public class LeapYearGUI extends JFrame{
     private JButton btnCheckYear;
 
     public LeapYearGUI() {
-            btnCheckYear.addActionListener(e -> {
+        btnCheckYear.addActionListener(e -> {
+            try {
                 int year = Integer.parseInt(tfYear.getText());
+                if(year <= 0) {
+                    throw new NegativeNumberException("Year cannot be zero or negative");
+                }
                 if (year % 4 == 0) {
                     JOptionPane.showMessageDialog(pnlMain, "Leap year");
                 } else {
                     JOptionPane.showMessageDialog(pnlMain, "Not a leap year");
                 }
-            });
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(pnlMain, "Invalid input");
+            } catch (NegativeNumberException ex) {
+                JOptionPane.showMessageDialog(pnlMain, ex.getMessage());
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(pnlMain, "Error! Please try again");
+            }
+        });
     }
 
     public static void main(String[] args) {
@@ -27,4 +38,11 @@ public class LeapYearGUI extends JFrame{
         leapyear.setVisible(true);
         leapyear.setTitle("Leap Year Checker");
     }
+
+    private class NegativeNumberException extends Throwable {
+        public NegativeNumberException(String s ) {
+            super(s);
+        }
+    }
 }
+
