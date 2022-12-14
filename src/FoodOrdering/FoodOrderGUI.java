@@ -20,7 +20,6 @@ public class FoodOrderGUI extends  JFrame{
 
     private List<JRadioButton> bgDiscounts;
     private List<JCheckBox> bgFood;
-
     public FoodOrderGUI() {
         bgDiscounts = new ArrayList<>();
         bgDiscounts.add(rbNone);
@@ -35,71 +34,80 @@ public class FoodOrderGUI extends  JFrame{
         bgFood.add(cSoftDrinks);
         bgFood.add(cTea);
         bgFood.add(cSundae);
+        rbNone.setSelected(true);
+
         btnOrder.addActionListener(e -> {
             double total = 0;
-            for(JCheckBox food : bgFood) {
-                switch (food.getText()) {
-                    case "Pizza":
-                        if (food.isSelected()) {
-                            total += 100;
-                        }
-                        break;
-                    case "Burger":
-                        if (food.isSelected()) {
-                            total += 80;
-                        }
-                        break;
-                    case "Fries":
-                        if (food.isSelected()) {
-                            total += 65;
-                        }
-                        break;
-                    case "Soft Drinks":
-                        if (food.isSelected()) {
-                            total += 55;
-                        }
-                        break;
-                    case "Tea":
-                        if (food.isSelected()) {
-                            total += 50;
-                        }
-                        break;
-                    case "Sundae":
-                        if (food.isSelected()) {
-                            total += 40;
-                        }
-                        break;
-                }
-            }
             double result = 0;
-            for(JRadioButton discount : bgDiscounts) {
-                switch (discount.getText()) {
-                    case "None":
-                        if(discount.isSelected()) {
-                            result = total;
+            try {
+                for(JCheckBox food : bgFood) {
+                    switch (food.getText()) {
+                        case "Pizza":
+                            if (food.isSelected()) {
+                                total += 100;
+                            }
+                            break;
+                        case "Burger":
+                            if (food.isSelected()) {
+                                total += 80;
+                            }
+                            break;
+                        case "Fries":
+                            if (food.isSelected()) {
+                                total += 65;
+                            }
+                            break;
+                        case "Soft Drinks":
+                            if (food.isSelected()) {
+                                total += 55;
+                            }
+                            break;
+                        case "Tea":
+                            if (food.isSelected()) {
+                                total += 50;
+                            }
+                            break;
+                        case "Sundae":
+                            if (food.isSelected()) {
+                                total += 40;
+                            }
+                            break;
+                        default:
+                            throw new ItemMustBeSelectedException("Item must be selected");
+                    }
+                    for(JRadioButton discount : bgDiscounts) {
+                        switch (discount.getText()) {
+                            case "None":
+                                if(discount.isSelected()) {
+                                    result = total;
+                                }
+                                break;
+                            case "5% Off":
+                                if(discount.isSelected()) {
+                                    result = total - (total * 0.05);
+                                }
+                                break;
+                            case "10% Off":
+                                if(discount.isSelected()) {
+                                    result = total - (total * 0.10);
+                                }
+                                break;
+                            case "15% Off":
+                                if(discount.isSelected()) {
+                                    result = total - (total * 0.15);
+                                }
+                                break;
                         }
-                        break;
-                    case "5% Off":
-                        if(discount.isSelected()) {
-                            result = total - (total * 0.05);
-                        }
-                        break;
-                    case "10% Off":
-                        if(discount.isSelected()) {
-                            result = total - (total * 0.10);
-                        }
-                        break;
-                    case "15% Off":
-                        if(discount.isSelected()) {
-                            result = total - (total * 0.15);
-                        }
-                        break;
-                    default:
-                        result = total;
-                        break;
+                    }
                 }
+                JOptionPane.showMessageDialog(pnlMain, "The total price is Php " + String.format("%.2f",result));
+            } catch (ItemMustBeSelectedException e1) {
+                JOptionPane.showMessageDialog(pnlMain, e1.getMessage());
+            } catch (Exception e1) {
+                JOptionPane.showMessageDialog(pnlMain, "Error! Please try again");
             }
-            JOptionPane.showMessageDialog(pnlMain, "The total price is Php " + String.format("%.2f",result));
+
+
         });
     }
 
@@ -111,5 +119,12 @@ public class FoodOrderGUI extends  JFrame{
         order.setLocationRelativeTo(null);
         order.setVisible(true);
         order.setTitle("Food Ordering System");
+    }
+
+
+    class ItemMustBeSelectedException extends Exception {
+        public ItemMustBeSelectedException(String s) {
+            super(s);
+        }
     }
 }
