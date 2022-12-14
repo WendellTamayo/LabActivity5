@@ -14,30 +14,35 @@ public class SimpleCalcGUI extends JFrame {
     private JTextField tfNumber2;
 
     public SimpleCalcGUI() {
-        btnCompute.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int num1 = Integer.parseInt(tfNumber1.getText());
-                int num2 = Integer.parseInt(tfNumber2.getText());
-                String operation = cbOperations.getSelectedItem().toString();
-                int result = 0;
-                switch (operation) {
-                    case "+":
-                        result = num1 + num2;
-                        break;
-                    case "-":
-                        result = num1 - num2;
-                        break;
-                    case "*":
-                        result = num1 * num2;
-                        break;
-                    case "/":
-                        result = num1 / num2;
-                        break;
-                }
-                lblResult.setText(String.valueOf(result));
+            btnCompute.addActionListener(e -> {
+           try {
+                    int num1 = Integer.parseInt(tfNumber1.getText());
+                    int num2 = Integer.parseInt(tfNumber2.getText());
+                    String operation = cbOperations.getSelectedItem().toString();
+                    int result = 0;
+                    switch (operation) {
+                        case "+":
+                            result = num1 + num2;
+                            break;
+                        case "-":
+                            result = num1 - num2;
+                            break;
+                        case "*":
+                            result = num1 * num2;
+                            break;
+                        case "/":
+                            result = num1 / num2;
+                            break;
+                    }
+                    lblResult.setText(String.valueOf(result));
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(pnlMain, "Invalid input");
+            } catch (ArithmeticException ex) {
+                    JOptionPane.showMessageDialog(pnlMain, "Cannot divide by zero");
+           } catch (Exception ex) {
+                JOptionPane.showMessageDialog(pnlMain, "Error! Please try again");
             }
-        });
+            });
     }
 
     public static void main(String[] args) {
