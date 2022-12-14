@@ -21,6 +21,7 @@ public class FoodOrderGUI extends  JFrame{
         order.setContentPane(order.pnlMain);
         order.setDefaultCloseOperation(EXIT_ON_CLOSE);
         order.setSize(500, 600);
+        order.setLocationRelativeTo(null);
         order.setVisible(true);
         order.setTitle("Food Ordering System");
     }

@@ -1,6 +1,7 @@
 package SimpleCalc;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 public class SimpleCalcGUI extends JFrame {
     private JPanel pnlMain;
@@ -13,8 +14,9 @@ public class SimpleCalcGUI extends JFrame {
     public static void main(String[] args) {
         SimpleCalcGUI calc = new SimpleCalcGUI();
         calc.setContentPane(calc.pnlMain);
-        calc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        calc.setDefaultCloseOperation(EXIT_ON_CLOSE);
         calc.setSize(500, 400);
+        calc.setLocationRelativeTo(null);
         calc.setVisible(true);
         calc.setTitle("Simple Calculator");
     }
