@@ -34,6 +34,7 @@ public class FoodOrderGUI extends  JFrame{
         bgFood.add(cSoftDrinks);
         bgFood.add(cTea);
         bgFood.add(cSundae);
+
         rbNone.setSelected(true);
 
         btnOrder.addActionListener(e -> {

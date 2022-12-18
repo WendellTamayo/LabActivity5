@@ -15,7 +15,15 @@ public class LeapYearGUI extends JFrame{
                     throw new NegativeNumberException("Year cannot be zero or negative");
                 }
                 if (year % 4 == 0) {
-                    JOptionPane.showMessageDialog(pnlMain, "Leap year");
+                    if (year % 100 == 0) {
+                        if (year % 400 == 0) {
+                            JOptionPane.showMessageDialog(pnlMain, "Leap year");
+                        } else {
+                            JOptionPane.showMessageDialog(pnlMain, "Not a leap year");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(pnlMain, "Leap year");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(pnlMain, "Not a leap year");
                 }
